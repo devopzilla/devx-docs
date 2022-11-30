@@ -84,7 +84,7 @@ builders: v1.#StackBuilder & {
 ➜ devx build dev
 🏗️  Loading stack...
 👀 Validating stack...
-🏭 Transforming stack 100% |███████████████████████████████████████████████████████████████████████████████████████| (1/1, 711 it/s)        
+🏭 Transforming stack 100% |████████████████████████| (1/1, 711 it/s)        
 [compose] applied resources to "build/dev/compose/docker-compose.yml"
 ```
 ```yaml title="build/dev/compose/docker-compose.yml"
