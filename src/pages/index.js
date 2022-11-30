@@ -4,7 +4,6 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import illustration from '@site/static/img/illustration.png'
 
 import styles from './index.module.css';
 
@@ -40,10 +39,7 @@ export default function Home() {
             description="Guku DevX is a tool for building developer-centric interfaces for your internal developer platform (IDP). Use DevX to standardise how developers run apps and enable infrastructure self-service. <head />">
             <HomepageHeader />
             <main>
-                {/* <HomepageFeatures /> */}
-                {/* <div className='illustration'>
-                    <img src={illustration}></img>
-                </div> */}
+                <HomepageFeatures />
             </main>
         </Layout>
     );

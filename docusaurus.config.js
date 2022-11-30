@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: 'DevX',
+    title: 'guku DevX',
     tagline: 'Standardise how developers run apps. Enable infrastructure self-service.\n Scale DevOps.',
     url: 'https://your-docusaurus-test-site.com',
     baseUrl: '/',
@@ -57,7 +57,7 @@ const config = {
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
             navbar: {
-                title: 'Guku DevX',
+                title: 'DevX',
                 // logo: {
                 //     alt: 'My Site Logo',
                 //     src: 'img/logo.svg',
@@ -71,7 +71,7 @@ const config = {
                     },
                     // { to: '/blog', label: 'Blog', position: 'left' },
                     {
-                        href: 'https://github.com/devopzilla/guku-devx',
+                        href: 'https://github.com/devopzilla/GUKU-devx',
                         label: 'GitHub',
                         position: 'right',
                     },
@@ -115,7 +115,7 @@ const config = {
                     //         // },
                     //         {
                     //             label: 'GitHub',
-                    //             href: 'https://github.com/devopzilla/guku-devx',
+                    //             href: 'https://github.com/devopzilla/GUKU-devx',
                     //         },
                     //     ],
                     // },
