@@ -8,6 +8,12 @@ Guku DevX is a tool for building developer-centric interfaces for your internal 
 
 The cloud-native landscape is ever-expanding. DevX let's you use a single tool with a single configuration language [CUE](https://cuelang.org) to define how to build and run your apps once. Then use Docker Compose, Kubernetes, or any of your favourite tools to do the work.
 
+## Configuration language
+We use [CUE](https://cuelang.org/) to write strongly typed configurations. You can now shift YAML typos left, instead of detecting errors when applying configurations. You can easily transform CUE configuration files to and from YAML (CUE is a superset of YAML & JSON).
+
+[CUE](https://cuelang.org/) is the result of years of experience writing configuration languages at Google, and seeks to improve the developer experience while avoiding some nasty pitfalls. CUE looks like JSON, while making declarative data definition, generation, and validation a breeze. You can find a primer on CUE [here](https://docs.dagger.io/1215/what-is-cue/#understanding-cue).
+
+
 
 ## Getting Started
 
