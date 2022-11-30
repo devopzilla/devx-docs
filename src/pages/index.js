@@ -23,7 +23,7 @@ function HomepageHeader() {
                     <Link
                         className="button button--secondary button--lg"
                         to="https://github.com/devopzilla/guku-devx">
-                        ⭐ Me on Github
+                        ⭐ me on Github
                     </Link>
                 </div>
             </div>

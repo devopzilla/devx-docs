@@ -4,44 +4,123 @@ sidebar_position: 1
 
 # Intro
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Guku DevX is a tool for building developer-centric interfaces for your internal developer platform (IDP). Use DevX to standardise how developers run apps and enable infrastructure self-service.
+
+The cloud-native landscape is ever-expanding. DevX let's you use a single tool with a single configuration language [CUE](https://cuelang.org) to define how to build and run your apps once. Then use Docker Compose, Kubernetes, or any of your favourite tools to do the work.
+
 
 ## Getting Started
 
-Get started by **creating a new site**.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+### Install devx from the [releases page](https://github.com/devopzilla/guku-devx/releases)
 
-### What you'll need
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
+### Init the project
 ```bash
-npm init docusaurus@latest my-website classic
+➜ mkdir myapp
+➜ cd myapp
+➜ devx project init
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
+### Update project dependencies
 ```bash
-cd my-website
-npm run start
+➜ devx project update
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+### Generate example
+```bash
+➜ devx project gen
+```
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+This will generate a sample DevX stack and builder. You create a stack to define your workload and what it needs to run.
+```cue title="stack.cue"
+package main
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+import (
+	"guku.io/devx/v1"
+	"guku.io/devx/v1/traits"
+)
+
+stack: v1.#Stack & {
+	components: {
+		cowsay: {
+			v1.#Component
+			traits.#Workload
+			containers: default: {
+				image: "docker/whalesay"
+				command: ["cowsay"]
+				args: ["Hello DevX!"]
+			}
+		}
+	}
+}
+```
+
+You create a builder to tel DevX how to transform your stack configurations to the final deployable infrastructure as code. This step will usually be performed by platform teams or developers wishing to extend the platform.
+```cue title="builder.cue"
+package main
+
+import (
+	"guku.io/devx/v1"
+	"guku.io/devx/v1/transformers/compose"
+)
+
+builders: v1.#StackBuilder & {
+	dev: {
+		mainflows: [
+			v1.#Flow & {
+				pipeline: [
+					compose.#AddComposeService & {},
+				]
+			},
+		]
+	}
+}	
+```
+
+
+### Build configurations for the dev environment
+```bash
+➜ devx build dev
+🏗️  Loading stack...
+👀 Validating stack...
+🏭 Transforming stack 100% |███████████████████████████████████████████████████████████████████████████████████████| (1/1, 711 it/s)        
+[compose] applied resources to "build/dev/compose/docker-compose.yml"
+```
+```yaml title="build/dev/compose/docker-compose.yml"
+version: "3"
+volumes: {}
+services:
+  cowsay:
+    image: docker/whalesay
+    environment: {}
+    depends_on: []
+    command:
+      - cowsay
+      - Hello DevX!
+    restart: always
+    volumes: []
+```
+
+No we run the compose file
+```bash
+➜ docker-compose -f build/dev/compose/docker-compose.yml up
+[+] Running 1/0
+ ⠿ Container compose-cowsay-1  Created                                                                                                  0.0s
+Attaching to compose-cowsay-1
+compose-cowsay-1  |  _____________ 
+compose-cowsay-1  | < Hello DevX! >
+compose-cowsay-1  |  ------------- 
+compose-cowsay-1  |     \
+compose-cowsay-1  |      \
+compose-cowsay-1  |       \     
+compose-cowsay-1  |                     ##        .            
+compose-cowsay-1  |               ## ## ##       ==            
+compose-cowsay-1  |            ## ## ## ##      ===            
+compose-cowsay-1  |        /""""""""""""""""___/ ===        
+compose-cowsay-1  |   ~~~ {~~ ~~~~ ~~~ ~~~~ ~~ ~ /  ===- ~~~   
+compose-cowsay-1  |        \______ o          __/            
+compose-cowsay-1  |         \    \        __/             
+compose-cowsay-1  |           \____\______/   
+compose-cowsay-1 exited with code 0
+```
