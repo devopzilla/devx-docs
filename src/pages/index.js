@@ -23,7 +23,7 @@ function HomepageHeader() {
                     <Link
                         className={clsx('button button--secondary button--lg', styles.cta)}
                         to="https://github.com/devopzilla/guku-devx">
-                        ⭐ us on GitHub
+                        🌟 star us on GitHub
                     </Link>
                 </div>
             </div>

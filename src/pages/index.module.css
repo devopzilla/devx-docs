@@ -46,6 +46,11 @@
     /* width: 100%; */
     white-space: normal;
     /* border-radius: 2px; */
+    background-color: #1c1e21;
+  }
+
+  .cta {
+    color: white !important;
   }
   
   .cta:active {
