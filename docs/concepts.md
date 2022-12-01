@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Concepts
 
-The goal is to be able to define developer-centric configurations using a single file for all envrionments and for all vendors.
+The goal is to be able to define developer-centric configurations using a single technology to run workloads in any envrionment (e.g. local, dev, staging, production) and using any vendor's offerings.
 
 ![illustration](./assets/illustration.png)
 
