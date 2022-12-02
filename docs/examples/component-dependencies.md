@@ -22,7 +22,6 @@ import (
 stack: v1.#Stack & {
 	components: {
 		cowsay: {
-			v1.#Component
 			traits.#Workload
 			containers: default: {
 				image: "docker/whalesay"
@@ -34,7 +33,6 @@ stack: v1.#Stack & {
 			}
 		}
 		db: {
-			v1.#Component
 			traits.#Postgres
 			version:    "9.6"
 			database:   "postgres"

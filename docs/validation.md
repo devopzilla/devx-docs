@@ -15,7 +15,6 @@ Everything defined with DevX is strongly typed. Validate configurations while wr
 stack: v1.#Stack & {
 	components: {
 		cowsay: {
-			v1.#Component
 			traits.#Workload
 			containers: default: {
 				command: ["cowsay"]
@@ -36,7 +35,6 @@ stack.components.cowsay.containers.default.image is a required field
 stack: v1.#Stack & {
 	components: {
 		cowsay: {
-			v1.#Component
 			traits.#Workload
 			containers: default: {
 				image: 123
@@ -60,7 +58,6 @@ Error: stack.components.cowsay.containers.default.image: conflicting values stri
 stack: v1.#Stack & {
 	components: {
 		cowsay: {
-			v1.#Component
 			traits.#Workload
 			containers: default: {
 				image: "docker/whalesay"

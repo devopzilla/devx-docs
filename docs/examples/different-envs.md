@@ -22,7 +22,6 @@ import (
 stack: v1.#Stack & {
 	components: {
 		cowsay: {
-			v1.#Component
 			traits.#Workload
 			containers: default: {
 				image: "docker/whalesay"
