@@ -1,9 +1,9 @@
 ---
 slug: different-envs
-sidebar_position: 2
+sidebar_position: 4
 ---
 
-# Different environments
+# Environment deltas
 
 ## Config
 
