@@ -5,6 +5,8 @@ sidebar_position: 4
 
 # Helm
 
+## Config
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -66,6 +68,71 @@ builders: v1.#StackBuilder & {
 			},
 		]
 	}
+}
+```
+
+  </TabItem>
+</Tabs>
+
+
+## Result
+
+<Tabs>
+  <TabItem value="Dev" label="Dev" default>
+
+```yaml title="/build/dev/kubernetes/cowsay-application.yml"
+metadata:
+  name: cowsay
+  namespace: somethingelse
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+spec:
+  source:
+    repoURL: guku.io
+    targetRevision: v1
+    helm:
+      releaseName: cowsay
+      values: |
+        bla: 123
+    chart: guku
+  destination:
+    namespace: somethingelse
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+    retry:
+      limit: 5
+```
+
+  </TabItem>
+  <TabItem value="Prod" label="Prod">
+
+```json title="/build/prod/terraform/generated.tf.json"
+{
+  "resource": {
+    "helm_release": {
+      "cowsay": {
+        "name": "cowsay",
+        "namespace": "somethingelse",
+        "repository": "guku.io",
+        "chart": "guku",
+        "version": "v1",
+        "create_namespace": true,
+        "values": [
+          "bla: 123\n"
+        ]
+      }
+    }
+  }
 }
 ```
 

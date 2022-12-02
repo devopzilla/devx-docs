@@ -5,6 +5,8 @@ sidebar_position: 1
 
 # Simple
 
+## Config
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -64,3 +66,21 @@ builders: v1.#StackBuilder & {
 
   </TabItem>
 </Tabs>
+
+
+## Result
+
+```yaml title="build/dev/compose/docker-compose.yml"
+version: "3"
+volumes: {}
+services:
+  cowsay:
+    image: docker/whalesay
+    environment: {}
+    depends_on: []
+    command:
+      - cowsay
+      - Hello DevX!
+    restart: always
+    volumes: []
+```

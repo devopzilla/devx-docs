@@ -5,6 +5,8 @@ sidebar_position: 2
 
 # Different environments
 
+## Config
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -33,7 +35,7 @@ stack: v1.#Stack & {
 
 builders: {
 	dev: additionalComponents: cowsay: containers: default: args: ["Hello DEV!"]
-	prod: additionalComponents: cowsay: containers: default: args: ["Hello Prod!"]
+	prod: additionalComponents: cowsay: containers: default: args: ["Hello PROD!"]
 }
 ```
 
@@ -68,6 +70,47 @@ builders: v1.#StackBuilder & {
 		]
 	}
 }
+```
+
+  </TabItem>
+</Tabs>
+
+## Result
+
+<Tabs>
+  <TabItem value="Dev" label="Dev" default>
+
+```yaml title="build/dev/compose/docker-compose.yml"
+version: "3"
+volumes: {}
+services:
+  cowsay:
+    image: docker/whalesay
+    environment: {}
+    depends_on: []
+    command:
+      - cowsay
+      - Hello DEV!
+    restart: always
+    volumes: []
+```
+
+  </TabItem>
+  <TabItem value="Prod" label="Prod">
+
+```yaml title="build/prod/compose/docker-compose.yml"
+version: "3"
+volumes: {}
+services:
+  cowsay:
+    image: docker/whalesay
+    environment: {}
+    depends_on: []
+    command:
+      - cowsay
+      - Hello PROD!
+    restart: always
+    volumes: []
 ```
 
   </TabItem>

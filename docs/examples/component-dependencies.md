@@ -5,6 +5,8 @@ sidebar_position: 3
 
 # Component dependencies
 
+## Config
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -72,3 +74,36 @@ builders: v1.#StackBuilder & {
 
   </TabItem>
 </Tabs>
+
+
+## Result
+
+```yaml title="build/dev/compose/docker-compose.yml"
+version: "3"
+volumes:
+  pg-data: null
+services:
+  db:
+    image: postgres:9.6-alpine
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_USER: dummy
+      POSTGRES_PASSWORD: dummy
+      POSTGRES_DB: postgres
+    depends_on: []
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    restart: "no"
+  cowsay:
+    image: docker/whalesay
+    environment:
+      DB_URL: db
+    depends_on:
+      - db
+    command:
+      - cowsay
+      - Hello DevX!
+    restart: always
+    volumes: []
+```
