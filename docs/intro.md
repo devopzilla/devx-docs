@@ -4,9 +4,11 @@ sidebar_position: 1
 
 # Introduction
 
-Guku DevX is a tool for building developer-centric interfaces for your internal developer platform (IDP). Use DevX to standardise how developers run apps and enable infrastructure self-service.
+Guku DevX is a tool for building a standard developer interface for your internal developer platform (IDP). Use DevX to standardise how developers run apps and enable infrastructure self-service.
 
-The cloud-native landscape is ever-expanding. DevX let's you use a single tool with a single configuration language [CUE](https://cuelang.org) to define how to build and run your apps once. Then use Docker Compose, Kubernetes, or any of your favourite tools to do the work.
+DevX let's you use a single tool to define what your app needs to run. Then use Docker Compose, Kubernetes, Terraform, or any of your favourite tools to make it happen.
+
+![illustration](./assets/illustration.png)
 
 ## Configuration language
 We use [CUE](https://cuelang.org/) to write strongly typed configurations. You can now shift YAML typos left, instead of detecting errors after applying configurations.
