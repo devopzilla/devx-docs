@@ -14,7 +14,7 @@ Traits and transformers you can use out of the box.
 + GitLab
 
 ## Transformers
-|Name|Path|
+|Name|Import path|
 |-|-|
 | ArgoCD    | `guku.io/devx/v1/transformers/argocd` |
 | Docker Compose | `guku.io/devx/v1/transformers/compose` |
