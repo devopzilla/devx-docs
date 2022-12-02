@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Package management
+# 🏗️ Package management
 
 You can publish and share CUE packages directly through git repositories. Define your platform once and share it a-cross all your services
 ## Create a new package

@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Capability discovery
+# 🔭 Capability discovery
 
 Discover platform capabilities
 ```bash
