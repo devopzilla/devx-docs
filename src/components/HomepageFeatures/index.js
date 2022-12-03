@@ -2,44 +2,58 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
+import tfImage from '@site/static/img/terraform.png';
+import k8sImage from '@site/static/img/kubernetes.png';
+import cmpImage from '@site/static/img/compose.png';
+import glImage from '@site/static/img/gitlab.png';
+import ghImage from '@site/static/img/github.png';
+import argoImage from '@site/static/img/argo.png';
+
+
 const FeatureList = [
-    //   {
-    //     title: 'Easy to Use',
-    //     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    //     description: (
-    //       <>
-    //         Docusaurus was designed from the ground up to be easily installed and
-    //         used to get your website up and running quickly.
-    //       </>
-    //     ),
-    //   },
-    //   {
-    //     title: 'Focus on What Matters',
-    //     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    //     description: (
-    //       <>
-    //         Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-    //         ahead and move your docs into the <code>docs</code> directory.
-    //       </>
-    //     ),
-    //   },
-    //   {
-    //     title: 'Powered by React',
-    //     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    //     description: (
-    //       <>
-    //         Extend or customize your website layout by reusing React. Docusaurus can
-    //         be extended while reusing the same header and footer.
-    //       </>
-    //     ),
-    //   },
+    {
+        title: '',
+        Img: tfImage,
+        width: '100px',
+        description: (<></>),
+    },
+    {
+        title: '',
+        Img: k8sImage,
+        width: '160px',
+        description: (<></>),
+    },
+    {
+        title: '',
+        Img: cmpImage,
+        width: '160px',
+        description: (<></>),
+    },
+    {
+        title: '',
+        Img: glImage,
+        width: '150px',
+        description: (<></>),
+    },
+    {
+        title: '',
+        Img: ghImage,
+        width: '150px',
+        description: (<></>),
+    },
+    {
+        title: '',
+        Img: argoImage,
+        width: '80px',
+        description: (<></>),
+    },
 ];
 
-function Feature({ Svg, title, description }) {
+function Feature({ Img, title, width, description }) {
     return (
         <div className={clsx('col col--4')}>
             <div className="text--center">
-                <Svg className={styles.featureSvg} role="img" />
+                <img src={Img} width={width} />
             </div>
             <div className="text--center padding-horiz--md">
                 <h3>{title}</h3>
@@ -53,6 +67,9 @@ export default function HomepageFeatures() {
     return (
         <section className={styles.features}>
             <div className="container">
+                <div>
+                    <h2 style={{ textAlign: 'center' }}>Write once and deploy with</h2>
+                </div>
                 <div className="row">
                     {FeatureList.map((props, idx) => (
                         <Feature key={idx} {...props} />
