@@ -12,6 +12,7 @@ Traits and transformers you can use out of the box.
 + Docker Compose
 + Terraform
 + GitLab
++ GitHub
 
 ## Transformers
 |Name|Import path|
@@ -19,6 +20,7 @@ Traits and transformers you can use out of the box.
 | ArgoCD    | `guku.io/devx/v1/transformers/argocd` |
 | Docker Compose | `guku.io/devx/v1/transformers/compose` |
 | GitLab | `guku.io/devx/v1/transformers/gitlab` |
+| GitHab | `guku.io/devx/v1/transformers/github` |
 | Terraform | `guku.io/devx/v1/transformers/terraform` |
 | Istio | `guku.io/devx/v1/transformers/istio` |
 | Kubernetes | `guku.io/devx/v1/transformers/kubernetes` |
