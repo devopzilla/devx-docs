@@ -2,12 +2,12 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
-import tfImage from '@site/static/img/terraform.png';
-import k8sImage from '@site/static/img/kubernetes.png';
-import cmpImage from '@site/static/img/compose.png';
+import tfImage from '@site/static/img/terraform-bg.png';
+import k8sImage from '@site/static/img/kubernetes-bg.png';
+import cmpImage from '@site/static/img/compose-bg.png';
 import glImage from '@site/static/img/gitlab.png';
-import ghImage from '@site/static/img/github.png';
-import argoImage from '@site/static/img/argo.png';
+import ghImage from '@site/static/img/github-bg.png';
+import argoImage from '@site/static/img/argo-bg.png';
 
 
 const FeatureList = [
