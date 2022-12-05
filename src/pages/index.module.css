@@ -42,19 +42,18 @@
   }
   
   .cta{
-    box-shadow: -4px 4px #000000;
+    box-shadow: -4px 4px var(--cta-color);
     /* width: 100%; */
     white-space: normal;
     /* border-radius: 2px; */
-    background-color: #1c1e21;
+    background-color: transparent;
+    color: var(--cta-color) !important;
+    border-color: var(--cta-color);
   }
 
-  .cta {
-    color: white !important;
-  }
   
   .cta:active {
-    box-shadow: -2px 2px #000000;
+    box-shadow: -2px 2px var(--cta-color);
     transform: translateX(-2px) translateY(2px);
   }
   
