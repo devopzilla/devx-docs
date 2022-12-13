@@ -3,6 +3,26 @@
  * and scoped locally.
  */
 
+.node {
+    box-shadow: -4px 4px black;
+    width: 150px;
+    white-space: normal;
+    border-radius: 3px;
+    background-color:cornsilk;
+    color: black !important;
+    border: 1px solid black;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.handle {
+    background: black;
+    width: 5px;
+    height: 5px;
+    border-radius: 1px;
+    border-width: 0px;
+}
+
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
