@@ -79,9 +79,7 @@ builders: v1.#StackBuilder & {
 	dev: {
 		mainflows: [
 			v1.#Flow & {
-				pipeline: [
-					compose.#AddComposeService & {},
-				]
+				pipeline: [compose.#AddComposeService]
 			},
 		]
 	}
