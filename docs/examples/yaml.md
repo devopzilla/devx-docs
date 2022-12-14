@@ -51,7 +51,7 @@ builders:
       cowsay:
         containers:
           default:
-            args: ["Hello prod", "again"]
+            args: ["Hello prod"]
   dev:
     additionalComponents:
       cowsay:
@@ -85,6 +85,19 @@ builders: v1.#StackBuilder & {
 			},
 		]
 	}
+	prod: {
+		mainflows: [
+			{
+				pipeline: [compose.#AddComposeService]
+			},
+			{
+				pipeline: [compose.#ExposeComposeService]
+			},
+			{
+				pipeline: [compose.#AddComposePostgres]
+			},
+		]
+	}
 }
 ```
 
@@ -93,6 +106,9 @@ builders: v1.#StackBuilder & {
 
 
 ## Result
+
+<Tabs>
+  <TabItem value="Dev" label="Dev" default>
 
 ```yaml title="build/dev/compose/docker-compose.yml"
 version: "3"
@@ -127,3 +143,43 @@ services:
     restart: always
     volumes: []
 ```
+
+  </TabItem>
+  <TabItem value="Prod" label="Prod">
+
+```yaml title="build/prod/compose/docker-compose.yml"
+version: "3"
+volumes:
+  pg-data: null
+services:
+  db:
+    image: postgres:9.8-alpine
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_USER: dummy
+      POSTGRES_PASSWORD: dummy
+      POSTGRES_DB: default
+    depends_on: []
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    restart: "no"
+  cowsay:
+    image: docker/whalesay
+    environment:
+      DB_HOST: db
+      ENV_GEN: dummy
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    command:
+      - cowsay
+      - Hello prod
+    restart: always
+    volumes: []
+```
+
+  </TabItem>
+</Tabs>
