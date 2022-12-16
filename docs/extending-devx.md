@@ -48,7 +48,7 @@ import (
 }
 ```
 
-## Adding a transformer
+## Defining a transformer
 
 Transformers enrich and add information to components until all required resources are defined.
 
