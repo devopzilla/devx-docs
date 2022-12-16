@@ -15,7 +15,9 @@ define new traits when you want to create a new abstraction for developers, or w
 **When to add Transformers?**
 define new transformers when you want to customize how existing traits (or combination of traits) are transformed, or when you want to support new platforms.
 
-## Defining a trait
+
+## Create a new abstraction
+### Defining a trait
 
 Traits expose platform capabilities to developers by allowing them to describe their workload components.
 
@@ -48,9 +50,13 @@ import (
 }
 ```
 
-## Defining a transformer
+### Defining a transformer
 
 Transformers enrich and add information to components until all required resources are defined.
+
+:::tip
+When writing a transformer in CUE it helps to think of how the component would look after the transformation. Then write just that!
+:::
 
 We will create a `DjangoAppTransformer` that expects a component with the `DjangoApp` trait. Our transformer will add an `ALLOWED_HOSTS` environmental variable to django applications with:
 + `localhost`
@@ -79,7 +85,7 @@ import (
 }
 ```
 
-## Putting it all together
+### Putting it all together
 
 Developers will use the `DjangoAPP` trait to defined their django workloads.
 
@@ -159,3 +165,7 @@ services:
     restart: always
     volumes: []
 ```
+
+## Support a new platform
+
+[TODO: Meanwhile refer to the Kubernetes transformers [implmentation](https://github.com/devopzilla/guku-devx/blob/main/pkg/guku.io/devx/v1/transformers/kubernetes/transformers.cue) as an example]
