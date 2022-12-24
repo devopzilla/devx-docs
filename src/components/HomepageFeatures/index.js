@@ -10,7 +10,7 @@ import ghImage from '@site/static/img/github-bg.png';
 import argoImage from '@site/static/img/argo-bg.png';
 
 
-const FeatureList = [
+const TechList = [
     {
         title: '',
         Img: tfImage,
@@ -71,7 +71,7 @@ export default function HomepageFeatures() {
                     <h2 style={{ textAlign: 'center' }}>Write once and deploy with</h2>
                 </div>
                 <div className="row">
-                    {FeatureList.map((props, idx) => (
+                    {TechList.map((props, idx) => (
                         <Feature key={idx} {...props} />
                     ))}
                 </div>

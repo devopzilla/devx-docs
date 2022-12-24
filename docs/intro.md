@@ -4,9 +4,11 @@ sidebar_position: 1
 
 # Introduction
 
-Guku DevX is a tool for building a standard developer interface for your internal developer platform (IDP). Use DevX to standardise how developers run apps and enable infrastructure self-service.
+DevX helps you define your own infrastructure abstractions. Why? so you don't have to write Kubernetes manifests, deal with Helm values, Terraform code, and Docker Compose manifests.
 
-DevX let's you use a single tool to define what your app needs to run. Then use Docker Compose, Kubernetes, Terraform, or any of your favourite tools to make it happen.
+Engineering teams started scaling DevOps by building internal developer platforms (IDPs). IDPs allow developers to self-serve their infrastructure needs. But there are no standards (yet) on how these platforms are built. How do we make IDPs evolve without slowing down developers?
+
+You can use DevX to build code-based developer interfaces for your IDP. Developers can create all the infrastructure they need, using a single tool, without leaving their code editor.
 
 ![illustration](./assets/illustration.png)
 
