@@ -169,3 +169,52 @@ services:
 ## Support a new platform
 
 [TODO: Meanwhile refer to the Kubernetes transformers [implmentation](https://github.com/devopzilla/guku-devx/blob/main/pkg/guku.io/devx/v1/transformers/kubernetes/transformers.cue) as an example]
+
+
+## Writing tests for transformers
+
+You can write unit tests for transformers to make sure no breakin changes are introduced as your platform evovles.
+
+```cue
+package main
+
+import (
+	"guku.io/devx/v1"
+	"guku.io/devx/v1/transformers/compose"
+)
+
+_exposable: v1.#TestCase & {
+	$metadata: test: "exposable"
+
+	transformer: compose.#ExposeComposeService
+	input: {
+		$metadata: id: "obi"
+		endpoints: default: ports: [
+			{
+				port:   8080
+				target: 80
+			},
+		]
+	}
+	output: _
+
+    // use to sure the values added by the transformer are as expected
+    // it's not possible to test for concreteness here
+	expect: {
+		endpoints: default: host: "obi"
+		$resources: compose: services: obi: ports: ["8080:80"]
+	}
+
+    // testing that some fields are concrete 
+    // since this cannot be done with "expect"
+	assert: {
+		"host is concrete": (output.endpoints.default.host & "123") == _|_
+	}
+}
+```
+
+Running tests
+
+```bash
+cue eval
+```

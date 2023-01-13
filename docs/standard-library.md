@@ -4,7 +4,9 @@ sidebar_position: 10
 
 # 📦 Standard library
 
-Traits and transformers you can use out of the box.
+Traits, transformers, and components you can use out of the box.
+
+The standard library of packages is hosted here https://github.com/devopzilla/guku-devx-catalog.
 
 ## Drivers
 
@@ -14,35 +16,11 @@ Traits and transformers you can use out of the box.
 + GitLab
 + GitHub
 
-## Transformers
-|Name|Import path|
+## V1 Package prefixes
+|Name|Import prefix|
 |-|-|
-| ArgoCD    | `guku.io/devx/v1/transformers/argocd` |
-| Docker Compose | `guku.io/devx/v1/transformers/compose` |
-| GitLab | `guku.io/devx/v1/transformers/gitlab` |
-| GitHub | `guku.io/devx/v1/transformers/github` |
-| Terraform | `guku.io/devx/v1/transformers/terraform` |
-| Istio | `guku.io/devx/v1/transformers/istio` |
-| Kubernetes | `guku.io/devx/v1/transformers/kubernetes` |
-
-## Traits 
-`guku.io/devx/v1/traits`
-
-### traits.#Workload        
-a component that runs containers 
-### traits.#Replicable      
-a component that can be horizontally scaled 
-### traits.#Exposable       
-a component that has endpoints that can be exposed 
-### traits.#Volume  
-a component that has a volume 
-### traits.#Postgres        
-a postgres database 
-### traits.#Helm    
-a helm chart using helm repo 
-### traits.#HelmGit 
-a helm chart using git 
-### traits.#HelmOCI 
-a helm chart using oci 
-### traits.#Workflow        
-an automation workflow 
+| Core schema       | `guku.io/devx/v1`                 |
+| Traits            | `guku.io/devx/v1/traits`          |
+| Transformers      | `guku.io/devx/v1/transformers`    |
+| Components        | `guku.io/devx/v1/components`      |
+| Resource schema   | `guku.io/devx/v1/resources`       |
