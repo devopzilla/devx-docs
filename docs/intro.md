@@ -43,7 +43,14 @@ We internally convert your YAML stacks to CUE for processing.
 ## Getting Started
 
 
-### Install devx from the [releases page](https://github.com/devopzilla/guku-devx/releases)
+### Option 1: Install devx using Homebrew
+
+```bash
+brew tap devopzilla/guku-devx
+brew install guku-devx       
+```
+
+### Option 2: Download the [binary](https://github.com/devopzilla/guku-devx/releases)
 
 
 ### Init the project
