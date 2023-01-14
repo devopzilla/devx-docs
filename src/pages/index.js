@@ -14,7 +14,9 @@ function HomepageHeader() {
             <div className="container">
                 <h1 className="hero__title">{siteConfig.title}</h1>
                 <p className="hero__subtitle">
-                    Configure your apps once. Iterate in development. Deploy to production
+                    Build flexible infrastructure abstractions that shift-left.
+                    <br />
+                    Scale DevOps.
                 </p>
 
                 <div className={styles.buttons}>
