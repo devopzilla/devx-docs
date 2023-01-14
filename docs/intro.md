@@ -22,6 +22,24 @@ You can [use YAML to define devx stacks](/docs/examples/yaml).
 We internally convert your YAML stacks to CUE for processing.
 :::
 
+## Definitions
+
+![design](./assets/design.png)
+
+**Project:** a collection of devx configuration files in a git repository. Projects have unique module identifiers like `devopzilla.com/user-service`.
+
+**Stack:** a set of components and is how you define your workloads and its dependencies. A stack is a contract between developers and platform designers.
+
+**Component:** represents a workload or a resource. A component has an id, a set of traits, labels, and fields. A component can be low level (e.g. RDS instance, Helm chart, Kubernetes resource) or as high level as you want (e.g. Django app, Postgres database, S3 API compatible bucket).
+
+**Trait:** represents a capability of a component and associated fields. You add a trait to a component to make use of the platform's capabilities, or define your own. Traits add fields to the component to allow it to be configure either by the developer, the platform team, or automatically by DevX (e.g. pull data from the environment or auto-generate secrets).
+
+**Transformer:** a data transformation function. A transformer is used to enrich components with more data until it's ready to deploy using various drivers. Transformers are used to encode your platform's best-practices and turn the abstract data defined by the stack into a form existing tools can operate on.
+
+**Resources:** the output of devx that is applied to your favorite platform (e.g. Kubernetes manifests, Terraform code, GitLab pipelines).
+
+**Driver:** used to write resources as configuration files to be consumed by existing tools like Kubectl, Terraform, ArgoCD, and Github Workflows.
+
 ## Getting Started
 
 
