@@ -25,12 +25,15 @@ stack: v1.#Stack & {
 	components: {
 		cowsay: {
 			traits.#Helm
-			url:       "guku.io"
-			chart:     "guku"
-			version:   "v1"
-			namespace: "somethingelse"
-			values: {
-				bla: 123
+			helm: {
+				k8s: version: minor: 19
+				url:       "guku.io"
+				chart:     "guku"
+				version:   "v1"
+				namespace: "somethingelse"
+				values: {
+					bla: 123
+				}
 			}
 		}
 	}
@@ -46,7 +49,7 @@ package main
 import (
 	"guku.io/devx/v1"
 	"guku.io/devx/v1/transformers/argocd"
-	"guku.io/devx/v1/transformers/terraform"
+	terraform "guku.io/devx/v1/transformers/terraform/helm"
 )
 
 builders: v1.#StackBuilder & {
@@ -54,7 +57,7 @@ builders: v1.#StackBuilder & {
 		mainflows: [
 			v1.#Flow & {
 				pipeline: [
-					argocd.#AddHelmRelease & {namespace: string | *"default"},
+					argocd.#AddHelmRelease & {helm: namespace: string | *"default"},
 				]
 			},
 		]
@@ -63,7 +66,7 @@ builders: v1.#StackBuilder & {
 		mainflows: [
 			v1.#Flow & {
 				pipeline: [
-					terraform.#AddHelmRelease & {namespace: "somethingelse"},
+					terraform.#AddHelmRelease & {helm: namespace: "somethingelse"},
 				]
 			},
 		]
