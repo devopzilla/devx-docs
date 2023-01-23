@@ -75,3 +75,12 @@ Error: stack.components.cowsay.containers.default.image: conflicting values "doc
     /examples/simple/stack.cue:14:12
     /examples/simple/stack.cue:21:56
 ```
+
+### Strict mode
+Enabling strict mode during build or validation allow you to make sure that all traits will be respected.
+Every trait is satisfied by at least one trasformer in all environments.
+```bash
+➜ devx project validate -S
+Error: trait is not fulfilled by any flow: 
+  cowsay/#Helm in prod
+```
