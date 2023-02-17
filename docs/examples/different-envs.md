@@ -63,6 +63,14 @@ builders: v2alpha1.#Environments & {
   </TabItem>
 </Tabs>
 
+## Build
+
+```bash
+devx build env1
+devx build env2
+```
+
+
 ## Result
 
 <Tabs>

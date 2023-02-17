@@ -91,6 +91,12 @@ builders: v2alpha1.#Environments & {
   </TabItem>
 </Tabs>
 
+## Build
+
+```bash
+devx build dev
+devx build prod
+```
 
 ## Result
 
