@@ -63,42 +63,20 @@ stack: v1.#Stack & {
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/transformers/compose"
-	tfaws "guku.io/devx/v1/transformers/terraform/aws"
-	k8s "guku.io/devx/v1/transformers/kubernetes"
+	"guku.io/devx/v2alpha1"
+	"guku.io/devx/v2alpha1/environments"
+        tfaws "guku.io/devx/v1/transformers/terraform/aws"
+    k8s "guku.io/devx/v1/transformers/kubernetes"
 )
 
-builders: v1.#StackBuilder & {
-	dev: {
-		mainflows: [
-			v1.#Flow & {
-				pipeline: [compose.#AddComposeService]
-			},
-			v1.#Flow & {
-				pipeline: [compose.#ExposeComposeService]
-			},
-			v1.#Flow & {
-				pipeline: [compose.#AddComposeVolume]
-			},
-		]
-	}
-	prod: {
-		mainflows: [
-			v1.#Flow & {
-				pipeline: [k8s.#AddDeployment]
-			},
-			v1.#Flow & {
-				pipeline: [k8s.#AddService]
-			},
-			v1.#Flow & {
-				pipeline: [k8s.#AddWorkloadVolumes]
-			},
-			v1.#Flow & {
-				pipeline: [tfaws.#AddSSMSecretParameter]
-			},
-		]
-	}
+builders: v2alpha1.#Environments & {
+	dev:  environments.#Compose
+	prod:  flows: {
+            "kubernetes/add-deployment":pipeline: [k8s.#AddDeployment]
+            "kubernetes/add-service":pipeline: [k8s.#AddService]
+            "kubernetes/add-volumes":pipeline: [k8s.#AddWorkloadVolumes]
+            "terraform/add-secret":pipeline: [tfaws.#AddSSMSecretParameter]
+    }
 }
 ```
 
@@ -111,7 +89,7 @@ builders: v1.#StackBuilder & {
 <Tabs>
   <TabItem value="Dev" label="Dev" default>
 
-```yaml title="/build/dev/compose/docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "3"
 volumes:
   apikey-a: null
@@ -119,7 +97,7 @@ services:
   cowsay:
     image: docker/whalesay
     environment:
-      API_KEY: SECRET[apikey-a:4]
+      API_KEY: apikey-a-very-long-secure-secret
       SOMETHING: bla
     depends_on: []
     command:
@@ -137,14 +115,17 @@ services:
 {
   "resource": {
     "aws_ssm_parameter": {
-      "commonsecrets_apikey": {
+      "secret_apikey-a": {
         "name": "apikey-a",
         "type": "SecureString",
-        "value": "${random_password.commonsecrets_apikey.result}"
+        "value": "${random_password.secret_apikey-a.result}",
+        "tags": {
+          "terraform": "true"
+        }
       }
     },
     "random_password": {
-      "commonsecrets_apikey": {
+      "secret_apikey-a": {
         "length": 32,
         "special": false
       }

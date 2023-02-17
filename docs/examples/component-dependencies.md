@@ -3,7 +3,7 @@ slug: component-dependencies
 sidebar_position: 3
 ---
 
-# Component dependencies
+# Dependencies
 
 ## Config
 
@@ -29,16 +29,22 @@ stack: v1.#Stack & {
 				image: "docker/whalesay"
 				command: ["cowsay"]
 				args: ["Hello DevX!"]
-                env: {
-                    DB_URL: db.host
-                }
+				env: {
+					DB_URL: db.database.host
+				}
 			}
 		}
 		db: {
-			traits.#Postgres
-			version:    "9.6"
-			database:   "postgres"
-			persistent: true
+			traits.#Database
+			traits.#Secret
+			database: {
+				version:    "9.6"
+				engine:     "postgres"
+				persistent: true
+				username:   "root"
+				password:   secrets.dbPassword
+			}
+			secrets: dbPassword: name: "pg-password"
 		}
 	}
 }
@@ -51,24 +57,12 @@ stack: v1.#Stack & {
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/transformers/compose"
+	"guku.io/devx/v2alpha1"
+	"guku.io/devx/v2alpha1/environments"
 )
 
-builders: v1.#StackBuilder & {
-	dev: {
-		mainflows: [
-			v1.#Flow & {
-				pipeline: [compose.#AddComposeService]
-			},
-			v1.#Flow & {
-				pipeline: [compose.#AddComposeVolume]
-			},
-			v1.#Flow & {
-				pipeline: [compose.#AddComposePostgres]
-			},
-		]
-	}
+builders: v2alpha1.#Environments & {
+	dev: environments.#Compose
 }
 ```
 
@@ -78,22 +72,22 @@ builders: v1.#StackBuilder & {
 
 ## Result
 
-```yaml title="build/dev/compose/docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "3"
 volumes:
-  pg-data: null
+  db-data: null
 services:
   db:
     image: postgres:9.6-alpine
     ports:
       - "5432"
-    environment:
-      POSTGRES_USER: dummy
-      POSTGRES_PASSWORD: dummy
-      POSTGRES_DB: postgres
     depends_on: []
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: pg-password
+      POSTGRES_DB: main
     volumes:
-      - pg-data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     restart: "no"
   cowsay:
     image: docker/whalesay

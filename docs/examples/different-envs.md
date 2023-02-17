@@ -34,8 +34,8 @@ stack: v1.#Stack & {
 }
 
 builders: {
-	dev: additionalComponents: cowsay: containers: default: args: ["Hello DEV!"]
-	prod: additionalComponents: cowsay: containers: default: args: ["Hello PROD!"]
+	env1: components: cowsay: containers: default: args: ["Hello DEV!"]
+	env2: components: cowsay: containers: default: args: ["Hello PROD!"]
 }
 ```
 
@@ -46,28 +46,16 @@ builders: {
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/transformers/compose"
+	"guku.io/devx/v2alpha1"
+	"guku.io/devx/v2alpha1/environments"
 )
 
-builders: v1.#StackBuilder & {
-	dev: {
-		mainflows: [
-			v1.#Flow & {
-				pipeline: [
-					compose.#AddComposeService,
-				]
-			},
-		]
+builders: v2alpha1.#Environments & {
+	env1: environments.#Compose & {
+		drivers: compose: output: file: "docker-compose-env1.yml"
 	}
-	prod: {
-		mainflows: [
-			v1.#Flow & {
-				pipeline: [
-					compose.#AddComposeService,
-				]
-			},
-		]
+	env2: environments.#Compose & {
+		drivers: compose: output: file: "docker-compose-env2.yml"
 	}
 }
 ```
@@ -80,7 +68,7 @@ builders: v1.#StackBuilder & {
 <Tabs>
   <TabItem value="Dev" label="Dev" default>
 
-```yaml title="build/dev/compose/docker-compose.yml"
+```yaml title="docker-compose-env1.yml"
 version: "3"
 volumes: {}
 services:
@@ -98,7 +86,7 @@ services:
   </TabItem>
   <TabItem value="Prod" label="Prod">
 
-```yaml title="build/prod/compose/docker-compose.yml"
+```yaml title="docker-compose-env2.yml"
 version: "3"
 volumes: {}
 services:

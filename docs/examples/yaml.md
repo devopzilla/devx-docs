@@ -38,22 +38,31 @@ stack:
           image: "docker/whalesay"
           command: ["cowsay"]
           env:
-            DB_HOST: ${ db.host }
+            DB_HOST: ${ db.database.host }
             ENV_GEN: ${ string  @guku(generate) }
     db:
       $traits:
-        - traits.#Postgres
-      version: "9.8"
+        - traits.#Database
+        - traits.#Secret
+      database:
+        version: "9.6"
+        engine: "postgres"
+        persistent: true
+        username: "root"
+        password: secrets.dbPassword
+      secrets:
+        dbPassword:
+          name: "pg-password"
 
 builders:
   prod:
-    additionalComponents:
+    components:
       cowsay:
         containers:
           default:
             args: ["Hello prod"]
   dev:
-    additionalComponents:
+    components:
       cowsay:
         containers:
           default:
@@ -67,36 +76,14 @@ builders:
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/transformers/compose"
+	"guku.io/devx/v2alpha1"
+	"guku.io/devx/v2alpha1/environments"
 )
 
-builders: v1.#StackBuilder & {
-	dev: {
-		mainflows: [
-			{
-				pipeline: [compose.#AddComposeService]
-			},
-			{
-				pipeline: [compose.#ExposeComposeService]
-			},
-			{
-				pipeline: [compose.#AddComposePostgres]
-			},
-		]
-	}
-	prod: {
-		mainflows: [
-			{
-				pipeline: [compose.#AddComposeService]
-			},
-			{
-				pipeline: [compose.#ExposeComposeService]
-			},
-			{
-				pipeline: [compose.#AddComposePostgres]
-			},
-		]
+builders: v2alpha1.#Environments & {
+	dev:  environments.#Compose
+	prod: environments.#Compose & {
+		drivers: compose: output: file: "docker-compose-prod.yml"
 	}
 }
 ```
@@ -110,22 +97,22 @@ builders: v1.#StackBuilder & {
 <Tabs>
   <TabItem value="Dev" label="Dev" default>
 
-```yaml title="build/dev/compose/docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "3"
 volumes:
-  pg-data: null
+  db-data: null
 services:
   db:
-    image: postgres:9.8-alpine
+    image: postgres:9.6-alpine
     ports:
       - "5432"
-    environment:
-      POSTGRES_USER: dummy
-      POSTGRES_PASSWORD: dummy
-      POSTGRES_DB: default
     depends_on: []
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: secrets.dbPassword
+      POSTGRES_DB: main
     volumes:
-      - pg-data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     restart: "no"
   cowsay:
     image: docker/whalesay
@@ -147,22 +134,22 @@ services:
   </TabItem>
   <TabItem value="Prod" label="Prod">
 
-```yaml title="build/prod/compose/docker-compose.yml"
+```yaml title="docker-compose-prod.yml"
 version: "3"
 volumes:
-  pg-data: null
+  db-data: null
 services:
   db:
-    image: postgres:9.8-alpine
+    image: postgres:9.6-alpine
     ports:
       - "5432"
-    environment:
-      POSTGRES_USER: dummy
-      POSTGRES_PASSWORD: dummy
-      POSTGRES_DB: default
     depends_on: []
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: secrets.dbPassword
+      POSTGRES_DB: main
     volumes:
-      - pg-data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     restart: "no"
   cowsay:
     image: docker/whalesay

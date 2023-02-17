@@ -42,25 +42,12 @@ stack: v1.#Stack & {
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/transformers/compose"
+	"guku.io/devx/v2alpha1"
+	"guku.io/devx/v2alpha1/environments"
 )
 
-builders: v1.#StackBuilder & {
-	dev: {
-		mainflows: [
-			v1.#Flow & {
-				pipeline: [
-					compose.#AddComposeService,
-				]
-			},
-			v1.#Flow & {
-				pipeline: [
-					compose.#ExposeComposeService,
-				]
-			},
-		]
-	}
+builders: v2alpha1.#Environments & {
+	dev: environments.#Compose
 }
 ```
 
@@ -70,7 +57,7 @@ builders: v1.#StackBuilder & {
 
 ## Result
 
-```yaml title="build/dev/compose/docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "3"
 volumes: {}
 services:
