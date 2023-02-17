@@ -9,41 +9,64 @@ You can publish and share CUE packages directly through git repositories. Define
 Create a new repository to store your packages (you can host multiple packages in a repository).
 
 ```bash
-pkg
-└── domain.com
-    └── package1
-        ├── cue.mod
-        |   └── module.cue # module: "domain.com/package1"
-        └── file.cue
+cue.mod
+└── module.cue # module: "domain.com/platform"
+subpackage
+└── file.cue
+file.cue
 ```
 
-```cue title="pkg/domain.com/package1/cue.mod/module.cue"
-module: "domain.com/package1"
+```cue title="cue.mod/module.cue"
+module: "domain.com/platform"
 ```
 
-## Add the package to `module.cue`
+```cue title="file.cue"
+package platform
+
+rootValue: 123
+```
+
+```cue title="subpackage/file.cue"
+package subpackage
+
+subpkgValue: 123
+```
+
+## Use your new package
+### Add the package to `module.cue`
 ```cue
 module: ""
 
 packages: [
-  "github.com/<org name>/<repo name>@<revision>/pkg/domain.com",
+  "github.com/<org name>/<repo name>@<git revision>:",
 ]		
 ```
 
-## Private repositories (optional)
+### (Optional) For private repositories
 
 Add Git secrets to the environment
 ```bash
 export GIT_USERNAME="username"
 export GIT_PASSWORD="password"
 ```
-or
+<!-- or
 ```bash
 export GIT_PRIVATE_KEY_FILE="path/to/key"
 export GIT_PRIVATE_KEY_FILE_PASSWORD="password"
-```
+``` -->
 
-## Update packages
+### Update packages
 ```bash
 ➜ devx project update
+```
+
+### Import
+```cue
+import (
+    "domain.com/platform"
+    "domain.com/platform/subpackage"
+)
+
+rootValue: platform.rootValue
+subpkgValue: subpackage.subpkgValue
 ```
