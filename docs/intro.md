@@ -93,24 +93,18 @@ stack: v1.#Stack & {
 }
 ```
 
-You create a builder to tel DevX how to transform your stack configurations to the final deployable infrastructure as code. This step will usually be performed by platform teams or developers wishing to extend the platform.
+You create a builder for the `dev` environment to tell DevX how to generate configurations. This step will usually be performed by platform teams or developers wishing to extend the platform.
 ```cue title="builder.cue"
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/transformers/compose"
+	"guku.io/devx/v2alpha1"
+	"guku.io/devx/v2alpha1/environments"
 )
 
-builders: v1.#StackBuilder & {
-	dev: {
-		mainflows: [
-			v1.#Flow & {
-				pipeline: [compose.#AddComposeService]
-			},
-		]
-	}
-}	
+builders: v2alpha1.#Environments & {
+	dev: environments.#Compose
+}
 ```
 
 
@@ -120,9 +114,9 @@ builders: v1.#StackBuilder & {
 🏗️  Loading stack...
 👀 Validating stack...
 🏭 Transforming stack 100% |████████████████████████| (1/1, 711 it/s)        
-[compose] applied resources to "build/dev/compose/docker-compose.yml"
+[compose] applied resources to "docker-compose.yml"
 ```
-```yaml title="build/dev/compose/docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: "3"
 volumes: {}
 services:
@@ -139,7 +133,7 @@ services:
 
 No we run the compose file
 ```bash
-➜ docker-compose -f build/dev/compose/docker-compose.yml up
+➜ docker-compose up
 [+] Running 1/0
  ⠿ Container compose-cowsay-1  Created                                                                                                  0.0s
 Attaching to compose-cowsay-1
