@@ -4,7 +4,7 @@ sidebar_position: 65
 
 # 🦾 Workflows (Taskfile)
 
-You can create, share, and run [Taskfiles](https://taskfile.dev/) with DevX.
+You can create, share, and run [Taskfiles](https://taskfile.dev/) with DevX. All go-task features are supported under the hood, and you don't have to install the go-task binary. 
 
 ## Defining & running tasks
 
