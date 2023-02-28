@@ -1,12 +1,12 @@
 ---
 title: Getting Started
-# description: My IaC honeymoon did not last long back in 2018, as we grew, we explored migrating to Kubernetes on a different cloud provider, and most of my Terraform code was not usable.
+description: getting started with devx.
 slug: getting-started
 authors:
   - name: George Fahmy
     title: Co-founder of Devopzilla
-tags: [docker-compose, CUE, IaC]
-keywords:  [docker-compose, CUE, IaC]
+tags: ["Docker Compose", CUE, IaC]
+keywords:  ["Docker Compose", CUE, IaC]
 hide_table_of_contents: false
 ---
 
@@ -25,19 +25,19 @@ brew install guku-devx
 
 ## Init the project
 ```bash
-➜ mkdir myapp
-➜ cd myapp
-➜ devx project init
+mkdir myapp
+cd myapp
+devx project init
 ```
 
 ## Update project dependencies
 ```bash
-➜ devx project update
+devx project update
 ```
 
 ## Generate example
 ```bash
-➜ devx project gen
+devx project gen
 ```
 
 This will generate a sample DevX stack and builder. You create a stack to define your workload and what it needs to run.
@@ -80,7 +80,7 @@ builders: v2alpha1.#Environments & {
 
 ## Build configurations for the dev environment
 ```bash
-➜ devx build dev
+devx build dev
 🏗️  Loading stack...
 👀 Validating stack...
 🏭 Transforming stack 100% |████████████████████████| (1/1, 711 it/s)        
@@ -103,7 +103,7 @@ services:
 
 No we run the compose file
 ```bash
-➜ docker-compose up
+docker-compose up
 [+] Running 1/0
  ⠿ Container compose-cowsay-1  Created                                                                                                  0.0s
 Attaching to compose-cowsay-1
