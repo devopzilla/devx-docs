@@ -41,7 +41,7 @@ export default function Home() {
     return (
         <Layout
             title={`${siteConfig.title}`}
-            description="Guku DevX is a tool for building developer-centric interfaces for your internal developer platform (IDP). Use DevX to standardise how developers run apps and enable infrastructure self-service. <head />">
+            description={`${siteConfig.tagline} <head />`}>
             <HomepageHeader />
             <main>
                 <HomepageFeatures />

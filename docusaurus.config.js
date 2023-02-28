@@ -7,7 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
     title: 'Develop faster. Deploy anywhere.',
-    tagline: 'Make ALL your configurations portable and easy to use.',
+    // tagline: 'Make ALL your configurations portable and easy to use.',
+    tagline: 'A single meta-configuration tool to generate, share, and validate ALL your workflows and configurations.',
     url: 'https://docx.guku.io',
     baseUrl: '/',
     onBrokenLinks: 'throw',
