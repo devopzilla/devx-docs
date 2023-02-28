@@ -68,7 +68,7 @@ export default function HomepageFeatures() {
         <section className={styles.features}>
             <div className="container">
                 <div>
-                    <h2 style={{ textAlign: 'center' }}>Write a few lines and generate configurations for</h2>
+                    <h2 style={{ textAlign: 'center' }}>Write a few lines to generate configurations for</h2>
                 </div>
                 <div className="row">
                     {TechList.map((props, idx) => (
