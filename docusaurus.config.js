@@ -8,7 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
     title: 'Develop faster. Deploy anywhere.',
     // tagline: 'Make ALL your configurations portable and easy to use.',
-    tagline: 'A single meta-configuration tool to generate, share, and validate ALL your workflows and configurations.',
+    // tagline: 'A single meta-configuration tool to generate, share, and validate ALL your workflows and configurations.',
+    tagline: 'A single configuration tool to generate, share, and validate ALL your workflows and infrastructure code.',
     url: 'https://docx.guku.io',
     baseUrl: '/',
     onBrokenLinks: 'throw',
