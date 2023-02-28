@@ -56,6 +56,14 @@ const config = {
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
+            announcementBar: {
+                id: 'taskfile-1',
+                content:
+                    'DevX now supports <a target="_blank" href="https://taskfile.dev">Taskfiles</a> to run and share your workflows, <a href="/docs/workflows-taskfile">check the docs</a>.',
+                backgroundColor: 'var(--ifm-color-primary)',
+                textColor: 'var(--cta-color)',
+                isCloseable: true,
+            },
             navbar: {
                 title: 'DevX',
                 // logo: {

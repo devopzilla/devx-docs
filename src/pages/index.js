@@ -20,6 +20,16 @@ function HomepageHeader() {
                         to="https://github.com/devopzilla/guku-devx">
                         🌟 star us on GitHub
                     </Link>
+                    <Link
+                        className={clsx('button button--secondary button--lg', styles.cta)}
+                        to="https://devxplay.guku.io">
+                        🕹️ playground
+                    </Link>
+                    <Link
+                        className={clsx('button button--secondary button--lg', styles.cta)}
+                        to="/docs/intro">
+                        📖 docs
+                    </Link>
                 </div>
             </div>
         </header>
