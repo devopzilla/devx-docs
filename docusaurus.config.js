@@ -69,7 +69,7 @@ const config = {
                 isCloseable: true,
             },
             navbar: {
-                title: 'DevX',
+                title: '{ DevX }',
                 // logo: {
                 //     alt: 'My Site Logo',
                 //     src: 'img/logo.svg',
