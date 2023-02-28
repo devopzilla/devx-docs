@@ -40,13 +40,15 @@ const config = {
                     // editUrl:
                     //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
                 },
-                // blog: {
-                //     showReadingTime: true,
-                //     // Please change this to your repo.
-                //     // Remove this to remove the "edit this page" links.
-                //     editUrl:
-                //         'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-                // },
+                blog: {
+                    showReadingTime: true,
+                    routeBasePath: "/tutorials",
+                    path: "./tutorials",
+                    // Please change this to your repo.
+                    // Remove this to remove the "edit this page" links.
+                    // editUrl:
+                    //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                },
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
                 },
@@ -78,7 +80,11 @@ const config = {
                         position: 'left',
                         label: 'Docs',
                     },
-                    // { to: '/blog', label: 'Blog', position: 'left' },
+                    {
+                        to: 'tutorials',
+                        position: 'left',
+                        label: 'Tutorials',
+                    },
                     {
                         href: 'https://github.com/devopzilla/GUKU-devx',
                         label: 'GitHub',
@@ -137,6 +143,17 @@ const config = {
                 additionalLanguages: ['hcl', 'yaml', 'cue'],
             },
         }),
+
+    plugins: [
+        [
+            '@docusaurus/plugin-content-blog',
+            {
+                id: 'tutorials',
+                routeBasePath: 'tutorials',
+                path: './tutorials',
+            },
+        ],
+    ],
 };
 
 module.exports = config;
