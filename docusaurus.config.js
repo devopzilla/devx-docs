@@ -53,6 +53,10 @@ const config = {
                 theme: {
                     customCss: require.resolve('./src/css/custom.css'),
                 },
+                gtag: {
+                    trackingID: 'G-25VHT9FGDN',
+                    anonymizeIP: true,
+                },
             }),
         ],
     ],
@@ -86,6 +90,11 @@ const config = {
                         position: 'left',
                         label: 'Tutorials',
                     },
+                    // {
+                    //     to: 'catalog',
+                    //     position: 'left',
+                    //     label: 'Catalog',
+                    // },
                     {
                         href: 'https://github.com/devopzilla/GUKU-devx',
                         label: 'GitHub',
@@ -154,6 +163,17 @@ const config = {
                 path: './tutorials',
             },
         ],
+        async function myPlugin(context, options) {
+            return {
+                name: "docusaurus-tailwindcss",
+                configurePostCss(postcssOptions) {
+                    // Appends TailwindCSS and AutoPrefixer.
+                    postcssOptions.plugins.push(require("tailwindcss"));
+                    postcssOptions.plugins.push(require("autoprefixer"));
+                    return postcssOptions;
+                },
+            };
+        },
     ],
 };
 
