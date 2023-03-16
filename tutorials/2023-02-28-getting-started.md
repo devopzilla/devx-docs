@@ -2,9 +2,7 @@
 title: Getting Started
 description: getting started with devx.
 slug: getting-started
-authors:
-  - name: George Fahmy
-    title: Co-founder of Devopzilla
+authors: george
 tags: ["Docker Compose", CUE, IaC]
 keywords:  ["Docker Compose", CUE, IaC]
 hide_table_of_contents: false
