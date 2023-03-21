@@ -173,7 +173,7 @@ services:
 
 ## Writing tests for transformers
 
-You can write unit tests for transformers to make sure no breakin changes are introduced as your platform evovles.
+You can write unit tests for transformers to make sure no breaking changes are introduced as your platform evolves.
 
 ```cue
 package main
