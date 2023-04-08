@@ -145,7 +145,7 @@ const config = {
                     //     ],
                     // },
                 ],
-                copyright: `Copyright © ${new Date().getFullYear()} Devopzilla. Built with Docusaurus.`,
+                copyright: `Copyright © ${new Date().getFullYear()} Stakpak Inc. Built with Docusaurus.`,
             },
             prism: {
                 theme: lightCodeTheme,
