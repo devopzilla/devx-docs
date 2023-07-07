@@ -11,7 +11,7 @@ You can build and compare stacks a-cross git history.
 ```bash
 devx diff HEAD~2 prod
 📍 Processing target stack @ HEAD~2
-📦 Downloading github.com/devopzilla/guku-devx-catalog@main/pkg @ 05bda12c0d5e05589d3efe314ea1d4817ab7252a
+📦 Downloading github.com/stakpak/devx-catalog@main/pkg @ 05bda12c0d5e05589d3efe314ea1d4817ab7252a
 🏗️  Loading stack...
 👀 Validating stack...
 🏭 Transforming stack 100% |███████████████████████████████████████████| (3/3, 153 it/s)        

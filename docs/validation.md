@@ -48,7 +48,7 @@ stack: v1.#Stack & {
 ```bash
 ➜ devx project validate
 Error: stack.components.cowsay.containers.default.image: conflicting values string and 123 (mismatched types string and int):
-    /examples/simple/cue.mod/pkg/guku.io/devx/v1/traits/traits.cue:9:9
+    /examples/simple/cue.mod/pkg/stakpak.dev/devx/v1/traits/traits.cue:9:9
     /examples/simple/stack.cue:14:12
 ```
 

@@ -17,8 +17,8 @@ import TabItem from '@theme/TabItem';
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/traits"
+	"stakpak.dev/devx/v1"
+	"stakpak.dev/devx/v1/traits"
 )
 
 stack: v1.#Stack & {
@@ -27,7 +27,7 @@ stack: v1.#Stack & {
 			traits.#Helm
 			helm: {
 				k8s: version: minor: 19
-				url:       "guku.io"
+				url:       "stakpak.dev"
 				chart:     "guku"
 				version:   "v1"
 				namespace: "somethingelse"
@@ -47,9 +47,9 @@ stack: v1.#Stack & {
 package main
 
 import (
-	"guku.io/devx/v2alpha1"
-	"guku.io/devx/v1/transformers/argocd"
-	terraform "guku.io/devx/v1/transformers/terraform/helm"
+	"stakpak.dev/devx/v2alpha1"
+	"stakpak.dev/devx/v1/transformers/argocd"
+	terraform "stakpak.dev/devx/v1/transformers/terraform/helm"
 )
 
 builders: v2alpha1.#Environments & {
@@ -92,7 +92,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 spec:
   source:
-    repoURL: guku.io
+    repoURL: stakpak.dev
     targetRevision: v1
     helm:
       releaseName: cowsay
@@ -125,7 +125,7 @@ spec:
       "cowsay": {
         "name": "cowsay",
         "namespace": "somethingelse",
-        "repository": "guku.io",
+        "repository": "stakpak.dev",
         "chart": "guku",
         "version": "v1",
         "create_namespace": true,

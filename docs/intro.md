@@ -26,7 +26,7 @@ We internally convert your YAML stacks to CUE for processing.
 
 ![design](./assets/design.png)
 
-**Project:** a collection of devx configuration files in a git repository. Projects have unique module identifiers like `devopzilla.com/user-service`.
+**Project:** a collection of devx configuration files in a git repository. Projects have unique module identifiers like `stakpak.dev/user-service`.
 
 **Stack:** a set of components and is how you define your workloads and its dependencies. A stack is a contract between developers and platform designers.
 
@@ -46,11 +46,11 @@ We internally convert your YAML stacks to CUE for processing.
 ### Option 1: Install devx using Homebrew
 
 ```bash
-brew tap devopzilla/guku-devx
-brew install guku-devx       
+brew tap stakpak/stakpak
+brew install devx       
 ```
 
-### Option 2: Download the [binary](https://github.com/devopzilla/guku-devx/releases)
+### Option 2: Download the [binary](https://github.com/stakpak/devx/releases)
 
 
 ### Init the project
@@ -75,8 +75,8 @@ This will generate a sample DevX stack and builder. You create a stack to define
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/traits"
+	"stakpak.dev/devx/v1"
+	"stakpak.dev/devx/v1/traits"
 )
 
 stack: v1.#Stack & {
@@ -98,8 +98,8 @@ You create a builder for the `dev` environment to tell DevX how to generate conf
 package main
 
 import (
-	"guku.io/devx/v2alpha1"
-	"guku.io/devx/v2alpha1/environments"
+	"stakpak.dev/devx/v2alpha1"
+	"stakpak.dev/devx/v2alpha1/environments"
 )
 
 builders: v2alpha1.#Environments & {

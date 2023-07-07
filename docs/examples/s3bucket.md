@@ -17,8 +17,8 @@ import TabItem from '@theme/TabItem';
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/traits"
+	"stakpak.dev/devx/v1"
+	"stakpak.dev/devx/v1/traits"
 )
 
 stack: v1.#Stack
@@ -45,11 +45,11 @@ stack: {
 package main
 
 import (
-	"guku.io/devx/v2alpha1"
-	"guku.io/devx/v2alpha1/environments"
-	"guku.io/devx/v1/components"
-	"guku.io/devx/v1/transformers/compose"
-	tfaws "guku.io/devx/v1/transformers/terraform/aws"
+	"stakpak.dev/devx/v2alpha1"
+	"stakpak.dev/devx/v2alpha1/environments"
+	"stakpak.dev/devx/v1/components"
+	"stakpak.dev/devx/v1/transformers/compose"
+	tfaws "stakpak.dev/devx/v1/transformers/terraform/aws"
 )
 
 builders: v2alpha1.#Environments & {

@@ -10,7 +10,7 @@ const config = {
     // tagline: 'Make ALL your configurations portable and easy to use.',
     // tagline: 'A single meta-configuration tool to generate, share, and validate ALL your workflows and configurations.',
     tagline: 'A single configuration tool to generate, share, and validate ALL your workflows and infrastructure code.',
-    url: 'https://docx.guku.io',
+    url: 'https://devx.stakpak.dev',
     baseUrl: '/',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
@@ -18,7 +18,7 @@ const config = {
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
-    organizationName: 'devopzilla', // Usually your GitHub org/user name.
+    organizationName: 'stakpak', // Usually your GitHub org/user name.
     projectName: 'devx', // Usually your repo name.
 
     // Even if you don't use internalization, you can use this field to set useful
@@ -96,7 +96,7 @@ const config = {
                     //     label: 'Catalog',
                     // },
                     {
-                        href: 'https://github.com/devopzilla/GUKU-devx',
+                        href: 'https://github.com/stakpak/devx',
                         label: 'GitHub',
                         position: 'right',
                     },
@@ -140,7 +140,7 @@ const config = {
                     //         // },
                     //         {
                     //             label: 'GitHub',
-                    //             href: 'https://github.com/devopzilla/GUKU-devx',
+                    //             href: 'https://github.com/stakpak/devx',
                     //         },
                     //     ],
                     // },

@@ -13,7 +13,7 @@ Tasks are defined in builders, so every environment has its own set of tasks. De
 ```cue
 package main
 
-import "guku.io/devx/v2alpha1"
+import "stakpak.dev/devx/v2alpha1"
 
 
 builders: v2alpha1.#Environments & {
@@ -59,8 +59,8 @@ devx run prod push
 package main
 
 import (
-    "guku.io/devx/v2alpha1"
-    "guku.io/devx/v2alpha1/environments"
+    "stakpak.dev/devx/v2alpha1"
+    "stakpak.dev/devx/v2alpha1/environments"
 )
 
 

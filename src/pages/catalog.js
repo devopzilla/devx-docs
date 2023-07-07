@@ -8,7 +8,7 @@ export default function Catalog() {
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
-            const response = await fetch("https://devxhub.guku.io/api/catalog/public");
+            const response = await fetch("https://devxhub.stakpak.dev/api/catalog/public");
             const result = await response.json()
 
             setData(result);

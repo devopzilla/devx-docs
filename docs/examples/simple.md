@@ -17,8 +17,8 @@ import TabItem from '@theme/TabItem';
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/traits"
+	"stakpak.dev/devx/v1"
+	"stakpak.dev/devx/v1/traits"
 )
 
 stack: v1.#Stack & {
@@ -42,8 +42,8 @@ stack: v1.#Stack & {
 package main
 
 import (
-	"guku.io/devx/v2alpha1"
-	"guku.io/devx/v2alpha1/environments"
+	"stakpak.dev/devx/v2alpha1"
+	"stakpak.dev/devx/v2alpha1/environments"
 )
 
 builders: v2alpha1.#Environments & {

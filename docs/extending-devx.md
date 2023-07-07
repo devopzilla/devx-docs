@@ -29,8 +29,8 @@ Let's implement the `DjangoApp` trait with the following features:
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/traits"
+	"stakpak.dev/devx/v1"
+	"stakpak.dev/devx/v1/traits"
 )
 
 #DjangoApp: v1.#Trait & {
@@ -67,7 +67,7 @@ package main
 
 import (
 	"strings"
-	"guku.io/devx/v1"
+	"stakpak.dev/devx/v1"
 )
 
 #DjangoAppTransformer: v1.#Transformer & {
@@ -98,7 +98,7 @@ Platform engineers will append the `DjangoAppTransformer` to the builder pipelin
 package main
 
 import (
-	"guku.io/devx/v1"
+	"stakpak.dev/devx/v1"
 )
 
 stack: v1.#Stack & {
@@ -106,7 +106,7 @@ stack: v1.#Stack & {
 		cowsay: {
 			#DjangoApp
 			containers: default: image: "myapp"
-			allowedHosts: ["myapp.devopzilla.com"]
+			allowedHosts: ["myapp.stakpak.dev"]
 		}
 	}
 }
@@ -120,8 +120,8 @@ stack: v1.#Stack & {
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/transformers/compose"
+	"stakpak.dev/devx/v1"
+	"stakpak.dev/devx/v1/transformers/compose"
 )
 
 builders: v1.#StackBuilder & {
@@ -156,7 +156,7 @@ services:
   cowsay:
     image: myapp
     environment:
-      ALLOWED_HOSTS: localhost,cowsay,myapp.devopzilla.com
+      ALLOWED_HOSTS: localhost,cowsay,myapp.stakpak.dev
     depends_on: []
     ports:
       - "8080:80"
@@ -168,7 +168,7 @@ services:
 
 ## Support a new platform
 
-[TODO: Meanwhile refer to the Kubernetes transformers [implmentation](https://github.com/devopzilla/guku-devx/blob/main/pkg/guku.io/devx/v1/transformers/kubernetes/transformers.cue) as an example]
+[TODO: Meanwhile refer to the Kubernetes transformers [implmentation](https://github.com/stakpak/devx/blob/main/pkg/stakpak.dev/devx/v1/transformers/kubernetes/transformers.cue) as an example]
 
 
 ## Writing tests for transformers
@@ -179,8 +179,8 @@ You can write unit tests for transformers to make sure no breaking changes are i
 package main
 
 import (
-	"guku.io/devx/v1"
-	"guku.io/devx/v1/transformers/compose"
+	"stakpak.dev/devx/v1"
+	"stakpak.dev/devx/v1/transformers/compose"
 )
 
 _exposable: v1.#TestCase & {

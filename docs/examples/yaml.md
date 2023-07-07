@@ -17,8 +17,8 @@ import TabItem from '@theme/TabItem';
 
 ```yaml
 import:
-  v1: "guku.io/devx/v1"
-  traits: "guku.io/devx/v1/traits"
+  v1: "stakpak.dev/devx/v1"
+  traits: "stakpak.dev/devx/v1/traits"
 
 stack:
   $schema:
@@ -76,8 +76,8 @@ builders:
 package main
 
 import (
-	"guku.io/devx/v2alpha1"
-	"guku.io/devx/v2alpha1/environments"
+	"stakpak.dev/devx/v2alpha1"
+	"stakpak.dev/devx/v2alpha1/environments"
 )
 
 builders: v2alpha1.#Environments & {

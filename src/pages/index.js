@@ -17,12 +17,12 @@ function HomepageHeader() {
                 <div className={styles.buttons}>
                     <Link
                         className={clsx('button button--secondary button--lg', styles.cta)}
-                        to="https://github.com/devopzilla/guku-devx">
+                        to="https://github.com/stakpak/devx">
                         🌟 star us on GitHub
                     </Link>
                     <Link
                         className={clsx('button button--secondary button--lg', styles.cta)}
-                        to="https://devxplay.guku.io">
+                        to="https://devxplay.stakpak.dev">
                         🕹️ playground
                     </Link>
                     <Link
